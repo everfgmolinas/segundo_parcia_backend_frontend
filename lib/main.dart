@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:segundo_parcia_backend/pages/home.dart';
 
+import 'constants.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,8 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-      ),
+      theme: mesaTheme,
       home: const MyHomePage(title: 'Restaurant'),
     );
   }
