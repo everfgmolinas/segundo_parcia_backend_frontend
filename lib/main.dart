@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:segundo_parcia_backend/pages/home.dart';
 
 import 'constants.dart';
+import 'models/user_model.dart';
+
+User user = User();
 
 void main() {
   runApp(const MyApp());
