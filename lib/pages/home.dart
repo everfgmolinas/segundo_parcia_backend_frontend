@@ -21,10 +21,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _incrementCounter() {
-    setState(() {
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SignUpBasicInfo()
+                        builder: (context) => const SignUpBasicInfo()
                     ),
                 );
               },

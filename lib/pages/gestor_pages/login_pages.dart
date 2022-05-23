@@ -5,7 +5,7 @@ import '../../constants.dart';
 
 
 class SignUpBasicInfo extends StatefulWidget {
-  SignUpBasicInfo({Key? key}) : super(key: key);
+  const SignUpBasicInfo({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => StateSignUpBasicInfo();
