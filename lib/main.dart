@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:segundo_parcia_backend/pages/home.dart';
 
 import 'constants.dart';
@@ -6,7 +7,8 @@ import 'models/user_model.dart';
 
 User user = User();
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
