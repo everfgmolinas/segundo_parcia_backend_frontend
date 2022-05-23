@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String genericError = "Algo salio mal";
+
 ThemeData mesaTheme = ThemeData(
   fontFamily: 'Montserrat',
   elevatedButtonTheme: ElevatedButtonThemeData(
