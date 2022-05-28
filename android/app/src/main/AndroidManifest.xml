@@ -2,7 +2,6 @@
     package="com.example.segundo_parcia_backend">
    <application
         android:label="segundo_parcia_backend"
-        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
