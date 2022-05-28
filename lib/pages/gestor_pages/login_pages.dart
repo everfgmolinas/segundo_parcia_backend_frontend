@@ -87,11 +87,11 @@ class StateSignUpBasicInfo extends State<SignUpBasicInfo> {
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('siguiente'),
+                              children: const [
+                                Text('siguiente'),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: SvgPicture.asset('assets/icon/arrow-right.svg'),
+                                  padding: EdgeInsets.only(left: 8.0),
+                                  child: Icon(Icons.arrow_forward),
                                 )
                               ],
                             ),
