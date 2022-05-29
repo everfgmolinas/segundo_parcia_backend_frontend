@@ -34,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  int cantRestaurant = 10;
   List<Restaurant>? restaurantList;
   bool _isLoading = true;
 
