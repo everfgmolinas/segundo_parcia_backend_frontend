@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:segundo_parcia_backend/pages/gestor_pages/reservation_page.dart';
 
 class Restaurants extends StatefulWidget {
@@ -28,6 +29,13 @@ class StateRestaurants extends State<Restaurants> {
     '21:00 - 22:00': false,
     '22:00 - 23:00': false,
   };
+  TextEditingController dateinput = TextEditingController();
+
+  @override
+  void initState() {
+    dateinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +48,48 @@ class StateRestaurants extends State<Restaurants> {
       body: Column(
         children: [
           Text(''),
+          Center(
+            child: Text(
+              '¿En qué fecha desea reservar?',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Container(
+              padding: EdgeInsets.all(15),
+              height:150,
+              child:Center(
+                  child:TextField(
+                    controller: dateinput, //editing controller of this TextField
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.calendar_today), //icon of text field
+                        labelText: "Seleccione una fecha" //label text of field
+                    ),
+                    readOnly: true,  //set it true, so that user will not able to edit text
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context, initialDate: DateTime.now(),
+                          firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2101)
+                      );
+
+                      if(pickedDate != null ){
+                        print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                        print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //you can implement different kind of Date Format here according to your requirement
+
+                        setState(() {
+                          dateinput.text = formattedDate; //set output date to TextField value.
+                        });
+                      }else{
+                        print("Debe seleccionar una fecha");
+                      }
+                    },
+                  )
+              )
+          ),
           Center(
             child: Text(
               '¿En qué horario desea reservar?',
@@ -72,7 +122,7 @@ class StateRestaurants extends State<Restaurants> {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if(values.containsValue(true)) {
+          if(values.containsValue(true) && (dateinput.text != "")) {
             Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Reservation(),

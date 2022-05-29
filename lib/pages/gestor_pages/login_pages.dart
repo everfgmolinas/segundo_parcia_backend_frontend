@@ -83,6 +83,7 @@ class StateSignUpBasicInfo extends State<SignUpBasicInfo> {
                             onPressed: () async {
                               if(_formKey.currentState!.validate()){
                                 //await Navigator.pushNamed(context, '/manageRestaurant');
+
                               }
                             },
                             child: Row(
