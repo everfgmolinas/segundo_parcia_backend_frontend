@@ -72,16 +72,21 @@ class StateRestaurants extends State<Restaurants> {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Reservation(),
-              )
-          );
+          if(values.containsValue(true)) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Reservation(),
+                )
+            );
+          }
         },
         backgroundColor: Colors.lightBlue,
         child: const Icon(Icons.navigate_next),
       ),
     );
   }
+
+
+
 }
+
