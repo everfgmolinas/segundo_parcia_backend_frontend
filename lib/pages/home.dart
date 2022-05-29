@@ -10,6 +10,7 @@ import 'package:segundo_parcia_backend/network/user_repository.dart';
 import 'package:segundo_parcia_backend/pages/gestor_pages/login_pages.dart';
 import 'package:dio/dio.dart';
 
+import 'gestor_pages/admin_page.dart';
 import 'gestor_pages/restaurant_pages.dart';
 
 
@@ -59,18 +60,28 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             // Here we take the value from the MyHomePage object that was created by
             // the App.build method, and use it to set our appbar title.
               title: Row(
                 children: [
                   FloatingActionButton(
                     onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUpBasicInfo()
-                        ),
-                      );
+                      if(loggeado == false){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpBasicInfo()
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AdminPage()
+                          ),
+                        );
+                      }
                     },
                     elevation: 0,
                     child: const Icon(Icons.account_circle),

@@ -12,6 +12,7 @@ import 'models/user_model.dart';
 User user = User();
 UserRepository userRepository = UserRepository();
 late GlobalKey<NavigatorState> navKey;
+bool loggeado = false;
 
 void main() async {
   await dotenv.load(fileName: ".env");

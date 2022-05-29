@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:segundo_parcia_backend/pages/gestor_pages/admin_page.dart';
 
 import '../../constants.dart';
 
@@ -83,7 +84,10 @@ class StateSignUpBasicInfo extends State<SignUpBasicInfo> {
                             onPressed: () async {
                               if(_formKey.currentState!.validate()){
                                 //await Navigator.pushNamed(context, '/manageRestaurant');
-
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => AdminPage())
+                                );
                               }
                             },
                             child: Row(
