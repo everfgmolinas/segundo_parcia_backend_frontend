@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:segundo_parcia_backend/bloc/restaurant_bloc.dart';
 import 'package:segundo_parcia_backend/main.dart';
 import 'package:segundo_parcia_backend/models/restaurant_model.dart';
+import 'package:segundo_parcia_backend/pages/gestor_pages/add_restaurant.dart';
 import 'package:segundo_parcia_backend/pages/gestor_pages/restaurant_pages.dart';
 import 'package:segundo_parcia_backend/pages/home.dart';
 
@@ -182,6 +183,17 @@ class StateAdminPage extends State<AdminPage> {
                 fontSize: 24
             ),
           ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddRestaurant())
+              );
+            },
+          backgroundColor: Colors.lightBlue,
+          child: const Icon(Icons.navigate_next),
         ),
       ),
     );
