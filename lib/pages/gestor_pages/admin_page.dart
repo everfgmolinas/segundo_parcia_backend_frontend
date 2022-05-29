@@ -137,6 +137,27 @@ class StateAdminPage extends State<AdminPage> {
 
                                 },
                                 child: Text(
+                                  'Mesas',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 10,
+                                      color: Colors.black
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  BlocProvider.of<RestaurantBloc>(context).add(
+                                      DeleteRestaurant(id: restaurantList![index].id)
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(content: Text('Restaurante eliminado exitosamente')));
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) => this.widget));
+                                },
+                                child: Text(
                                   'Eliminar',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,

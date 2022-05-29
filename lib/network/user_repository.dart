@@ -6,6 +6,26 @@ import 'package:segundo_parcia_backend/network/repository_helper.dart';
 import 'http.dart';
 
 class UserRepository {
+
+  Future postRestaurant() async {
+
+  }
+
+  Future<List<Restaurant>>? deleteRestaurant(String id) async {
+    try {
+      print('delete restaurant');
+      Response response = await dio.delete('/restaurante/${id}');
+      if(response.statusCode == 200) {
+        print('delete satisfactorily');
+      } else if(response.statusCode == 400){
+        print('Not found');
+      }
+      throw Failure(genericError);
+    } on DioError catch(e) {
+      throw Failure(genericError);
+    }
+  }
+
   Future<List<Restaurant>>? getListRestaurant() async {
     try {
       print('get restaurants');
