@@ -10,6 +10,8 @@ import 'package:segundo_parcia_backend/network/user_repository.dart';
 import 'package:segundo_parcia_backend/pages/gestor_pages/login_pages.dart';
 import 'package:dio/dio.dart';
 
+import 'gestor_pages/restaurant_pages.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -104,7 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius: BorderRadius.circular(30),
                             splashColor: Colors.blue,
                             onTap: () {
-                              debugPrint('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Restaurants(
+                                  restaurantName: restaurantList![index].name,
+                                  restaurantAddress: restaurantList![index].address)
+                                )
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
