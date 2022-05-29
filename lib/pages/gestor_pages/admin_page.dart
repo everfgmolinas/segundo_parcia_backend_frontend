@@ -34,13 +34,13 @@ class StateAdminPage extends State<AdminPage> {
     return BlocListener<RestaurantBloc, RestaurantState>(
         listener: (context, state) {
 
-      if (state is RestaurantLoaded) {
-        setState(() {
-          restaurantList = state.restaurantList;
-          _isLoading = false;
-        });
-      }
-    },
+          if (state is RestaurantLoaded) {
+            setState(() {
+              restaurantList = state.restaurantList;
+              _isLoading = false;
+            });
+          }
+        },
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,

@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:segundo_parcia_backend/models/restaurant_model.dart';
 import 'package:segundo_parcia_backend/network/repository_helper.dart';
 import 'package:segundo_parcia_backend/network/user_repository.dart';
+import 'package:segundo_parcia_backend/pages/gestor_pages/add_restaurant.dart';
 
 part 'restaurant_event.dart';
 part 'restaurant_state.dart';
@@ -40,6 +41,28 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
         await Future.delayed(const Duration(seconds: 2));
         var _post;
         await Task(() => _userRepository.deleteRestaurant(event.id!)!)
+            .attempt()
+            .mapLeftToFailure()
+            .run()
+            .then((value) {
+          _post = value;
+        });
+        var response;
+        if (_post.isLeft()) {
+          _post.leftMap((l) => response = l.message);
+          emit(Failed(response: response));
+        } else {
+          late List<Restaurant> restaurants;
+          _post.foldRight(
+              Restaurant, (a, previous) => restaurants = a);
+
+          emit(RestaurantLoaded(restaurantList: restaurants));
+        }
+      } else if (event is PostRestaurant) {
+        emit(Loading());
+        await Future.delayed(const Duration(seconds: 2));
+        var _post;
+        await Task(() => _userRepository.postRestaurant(event.name!, event.direccion!))
             .attempt()
             .mapLeftToFailure()
             .run()

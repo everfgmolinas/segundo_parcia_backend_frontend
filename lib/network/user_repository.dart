@@ -7,8 +7,19 @@ import 'http.dart';
 
 class UserRepository {
 
-  Future postRestaurant() async {
-
+  Future<List<Restaurant>> postRestaurant(String name, String direccion) async {
+    try {
+      print('add restaurant');
+      Response response = await dio.post('/restaurante/', data: {'nombre':name, 'direccion':direccion});
+      if(response.statusCode == 200) {
+        print('Add restaurant satisfactorily');
+      } else if (response.statusCode == 400) {
+        print('not found');
+      }
+      throw Failure(genericError);
+    } on DioError catch(e) {
+      throw Failure(genericError);
+    }
   }
 
   Future<List<Restaurant>>? deleteRestaurant(String id) async {
