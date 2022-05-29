@@ -5,9 +5,9 @@ abstract class RestaurantState {}
 
 class UserRegisterInitial extends RestaurantState {}
 
-class VaccinationLoaded extends RestaurantState {
-  final List<Restaurant>? userVaccination;
-  VaccinationLoaded({this.userVaccination});
+class RestaurantLoaded extends RestaurantState {
+  final List<Restaurant>? restaurantList;
+  RestaurantLoaded({this.restaurantList});
 }
 
 class Loading extends RestaurantState {}

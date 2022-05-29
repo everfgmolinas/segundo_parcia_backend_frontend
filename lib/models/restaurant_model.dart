@@ -11,14 +11,14 @@ class Restaurant {
         this.address,});
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
-    id: json["is"],
-    name: json["name"],
-    address: json["address"],
+    id: json["id"],
+    name: json["nombre"],
+    address: json["direccion"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name": name,
-    "address": address,
+    "nombre": name,
+    "direccion": address,
   };
 }

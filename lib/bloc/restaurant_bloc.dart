@@ -33,7 +33,7 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
           _post.foldRight(
               Restaurant, (a, previous) => restaurants = a);
 
-          emit(VaccinationLoaded(userVaccination: restaurants));
+          emit(RestaurantLoaded(restaurantList: restaurants));
         }
       }
     });
