@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:segundo_parcia_backend/bloc/restaurant_bloc.dart';
@@ -77,60 +79,72 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: _isLoading
               ?Center(
-                child: Text('Cargando'),
+                child: Text(
+                    'Buscando restaurantes...',
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontSize: 24
+                    ),
+                ),
               )
               :Center(
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
-                child: restaurantList!=null?
-                GridView.count(
-                  // Create a grid with 2 columns. If you change the scrollDirection to
-                  // horizontal, this produces 2 rows.
-                  crossAxisCount: 2,
-                  // Generate 10 widgets that display their index in the List.
-                  children: List.generate(restaurantList!.length, (index) {
-                    return Center(
-                      child: Card(
-                        // a rectangular area of material that responds to touch
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(30),
-                          splashColor: Colors.blue,
-                          onTap: () {
-                            debugPrint('Card tapped.');
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                child: Image.network('https://media-cdn.tripadvisor.com/media/photo-w/18/1e/24/8d/photo6jpg.jpg'),
-                              ),
-                              // agregar el nombre del restaurante
-                              Text(
-                                '${restaurantList![index].name}',
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.normal,
+                child: restaurantList!=null
+                  ?GridView.count(
+                    // Create a grid with 2 columns. If you change the scrollDirection to
+                    // horizontal, this produces 2 rows.
+                    crossAxisCount: 2,
+                    // Generate 10 widgets that display their index in the List.
+                    children: List.generate(restaurantList!.length, (index) {
+                      return Center(
+                        child: Card(
+                          // a rectangular area of material that responds to touch
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            splashColor: Colors.blue,
+                            onTap: () {
+                              debugPrint('Card tapped.');
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Image.network('https://media-cdn.tripadvisor.com/media/photo-w/18/1e/24/8d/photo6jpg.jpg'),
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
-                              // agregar localización
-                              Text(
-                                '${restaurantList![index].address}',
-                                maxLines: 2,
-                                style: TextStyle(
-                                  fontStyle: FontStyle.italic,
+                                // agregar el nombre del restaurante
+                                Text(
+                                  '${restaurantList![index].name}',
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                                // agregar localización
+                                Text(
+                                  '${restaurantList![index].address}',
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
                 )
-                    :Text('hule kp'),
+                    :Text(
+                      'No hay restaurantes disponibles',
+                      style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 24
+                      ),
+                    ),
               ),
         )
     );
