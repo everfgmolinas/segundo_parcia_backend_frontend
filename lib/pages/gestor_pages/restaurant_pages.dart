@@ -123,9 +123,16 @@ class StateRestaurants extends State<Restaurants> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if(values.containsValue(true) && (dateinput.text != "")) {
+            List<String> reservations = [];
+            values.forEach((key, value) {
+              reservations.add(key);
+            });
             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Reservation(),
+                MaterialPageRoute(builder: (context) => Reservation(
+                    restaurantName: widget.restaurantName,
+                    dateReservation: dateinput.text,
+                    reservations: reservations),
                 )
             );
           }

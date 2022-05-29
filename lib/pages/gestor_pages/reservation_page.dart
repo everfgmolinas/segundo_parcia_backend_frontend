@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Reservation extends StatefulWidget {
-  const Reservation({Key? key}) : super(key: key);
+  final String? restaurantName;
+  final String? dateReservation;
+  final List<String>? reservations;
+  const Reservation({Key? key, required this.restaurantName, required this.dateReservation, required this.reservations}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => StateReservation();
