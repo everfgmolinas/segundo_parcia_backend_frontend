@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:segundo_parcia_backend/pages/gestor_pages/reservation_page.dart';
 
 class Restaurants extends StatefulWidget {
   final String? restaurantName;
@@ -67,6 +68,19 @@ class StateRestaurants extends State<Restaurants> {
             ),
           ),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Reservation(),
+              )
+          );
+        },
+        backgroundColor: Colors.lightBlue,
+        child: const Icon(Icons.navigate_next),
       ),
     );
   }
