@@ -1,4 +1,4 @@
-List<Table> userVaccinationFromJson(dynamic str) => List<Table>.from(str.map((x) => Restaurant.fromJson(x)));
+List<Table> userVaccinationFromJson(dynamic str) => List<Table>.from(str.map((x) => Table.fromJson(x)));
 
 class Table {
   String? nombre,
