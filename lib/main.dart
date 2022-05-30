@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:segundo_parcia_backend/bloc/table_bloc.dart';
 import 'package:segundo_parcia_backend/network/http.dart';
 import 'package:segundo_parcia_backend/network/user_repository.dart';
 import 'package:segundo_parcia_backend/pages/home.dart';
@@ -30,8 +31,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
         BlocProvider<RestaurantBloc>(
-        create: (BuildContext context) => RestaurantBloc(),
-    ),
+          create: (BuildContext context) => RestaurantBloc(),
+        ),
+        BlocProvider<TableBloc>(
+          create: (BuildContext context) => TableBloc(),
+        ),
     ],
       child: MaterialApp(
         title: 'Flutter Demo',

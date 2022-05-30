@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:segundo_parcia_backend/models/hour_model.dart';
+import 'package:segundo_parcia_backend/models/restaurant_model.dart';
 import 'package:segundo_parcia_backend/pages/gestor_pages/reservation_page.dart';
 
 class Restaurants extends StatefulWidget {
-  final String? restaurantName;
-  final String? restaurantAddress;
-  const Restaurants({Key? key, required this.restaurantName, required this.restaurantAddress}) : super(key: key);
+  final Restaurant restaurants;
+  const Restaurants({Key? key, required this.restaurants}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => StateRestaurants();
@@ -16,18 +17,18 @@ class Restaurants extends StatefulWidget {
 
 class StateRestaurants extends State<Restaurants> {
 
-  Map<String, bool> values = {
-    '12:00 - 13:00': false,
-    '13:00 - 14:00': false,
-    '14:00 - 15:00': false,
-    '15:00 - 16:00': false,
-    '16:00 - 17:00': false,
-    '17:00 - 18:00': false,
-    '18:00 - 19:00': false,
-    '19:00 - 20:00': false,
-    '20:00 - 21:00': false,
-    '21:00 - 22:00': false,
-    '22:00 - 23:00': false,
+  Map<Hour, bool> values = {
+    Hour(hora_inicio: "12", hora_fin: "13"): false,
+    Hour(hora_inicio: "13", hora_fin: "14"): false,
+    Hour(hora_inicio: "14", hora_fin: "15"): false,
+    Hour(hora_inicio: "15", hora_fin: "16"): false,
+    Hour(hora_inicio: "16", hora_fin: "17"): false,
+    Hour(hora_inicio: "17", hora_fin: "18"): false,
+    Hour(hora_inicio: "18", hora_fin: "19"): false,
+    Hour(hora_inicio: "19", hora_fin: "20"): false,
+    Hour(hora_inicio: "20", hora_fin: "21"): false,
+    Hour(hora_inicio: "21", hora_fin: "22"): false,
+    Hour(hora_inicio: "22", hora_fin: "23"): false,
   };
   TextEditingController dateinput = TextEditingController();
 
@@ -41,8 +42,8 @@ class StateRestaurants extends State<Restaurants> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: widget.restaurantName!=null
-            ?Text('${widget.restaurantName}, ${widget.restaurantAddress}')
+        title: widget.restaurants.name!=null
+            ?Text('${widget.restaurants.name}, ${widget.restaurants.address}')
             : Text('Restaurante'),
       ),
       body: Column(
@@ -104,9 +105,9 @@ class StateRestaurants extends State<Restaurants> {
               padding: EdgeInsets.all(10),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              children: values.keys.map((String key) {
+              children: values.keys.map((Hour key) {
                 return new CheckboxListTile(
-                  title: Text(key),
+                  title: Text('${key.hora_inicio}:00 - ${key.hora_fin}:00'),
                   value: values[key],
                   onChanged: (value) {
                     setState(() {
@@ -123,16 +124,16 @@ class StateRestaurants extends State<Restaurants> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if(values.containsValue(true) && (dateinput.text != "")) {
-            List<String> reservations = [];
+            List<Hour> reservations = [];
             values.forEach((key, value) {
               reservations.add(key);
             });
             Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Reservation(
-                    restaurantName: widget.restaurantName,
+                    restaurants: widget.restaurants,
                     dateReservation: dateinput.text,
-                    reservations: reservations),
+                    time: reservations),
                 )
             );
           }

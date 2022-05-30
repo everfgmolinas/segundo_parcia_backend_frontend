@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               :Center(
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
-                child: restaurantList!=null
+                child: restaurantList!.isNotEmpty
                   ?GridView.count(
                     // Create a grid with 2 columns. If you change the scrollDirection to
                     // horizontal, this produces 2 rows.
@@ -118,9 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Restaurants(
-                                  restaurantName: restaurantList![index].name,
-                                  restaurantAddress: restaurantList![index].address)
+                                MaterialPageRoute(builder: (context) => Restaurants(restaurants: restaurantList![index])
                                 )
                               );
                             },
