@@ -75,6 +75,7 @@ class UserRepository {
       await dio.post("/reserva/mesasLibres/", data: {'restaurante_id':restaurant_id ,'fecha':date, "horas":time.map((e) => e.toJson()).toList()});
       if (response.statusCode == 200) {
         print('table geted');
+        response.data = response.data.where((e) => e['count'] == "0").toList();
         final listTable = tableFromJson(response.data);
         return listTable;
       } else if (response.statusCode == 404) {
@@ -86,13 +87,11 @@ class UserRepository {
       //   print(e);
       //   throw Failure(genericError);
       // }
-    } on DioError  catch (ex) {
-      if (ex.type == DioErrorType.connectTimeout || ex.type == DioErrorType.receiveTimeout) {
-        throw Failure("Ups, parece que tienes conexión a internet muy lenta");
-      }else {
-        throw Failure(genericError);
-      }
+    } catch(e) {
+      print(e);
+      throw Failure(genericError);
     }
+
   }
 
 }

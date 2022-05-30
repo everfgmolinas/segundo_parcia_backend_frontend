@@ -126,7 +126,9 @@ class StateRestaurants extends State<Restaurants> {
           if(values.containsValue(true) && (dateinput.text != "")) {
             List<Hour> reservations = [];
             values.forEach((key, value) {
-              reservations.add(key);
+              if(value){
+                reservations.add(key);
+              }
             });
             Navigator.push(
                 context,

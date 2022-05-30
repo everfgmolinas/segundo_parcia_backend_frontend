@@ -5,7 +5,7 @@ import 'package:segundo_parcia_backend/bloc/table_bloc.dart';
 import 'package:segundo_parcia_backend/models/hour_model.dart';
 import 'package:segundo_parcia_backend/models/restaurant_model.dart';
 import 'package:segundo_parcia_backend/models/table_model.dart';
-import 'package:segundo_parcia_backend/pages/home.dart';
+import 'package:segundo_parcia_backend/pages/gestor_pages/user_register.dart';
 
 class Reservation extends StatefulWidget {
   final Restaurant restaurants;
@@ -58,7 +58,7 @@ class StateReservation extends State<Reservation> {
             ),
           )
           :Center(
-            child: tableList!=null
+            child: tableList!.isNotEmpty
                 ?GridView.count(
               // Create a grid with 2 columns. If you change the scrollDirection to
               // horizontal, this produces 2 rows.
@@ -71,12 +71,10 @@ class StateReservation extends State<Reservation> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(30),
                       splashColor: Colors.blue,
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Mesa reservada para ${tableList![index].capacidad} personas')));
+                      onTap: () async {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Restaurant'))
+                            MaterialPageRoute(builder: (context) => UserRegister(table:tableList![index], dateReservation:widget.dateReservation!, time: widget.time!))
                         );
                       },
                       child: Column(
@@ -88,7 +86,14 @@ class StateReservation extends State<Reservation> {
                           ),
                           // agregar el nombre del restaurante
                           Text(
-                            '${tableList![index].capacidad}',
+                            '${tableList![index].nombre}',
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Text(
+                            'Capacidad: ${tableList![index].capacidad} personas',
                             maxLines: 1,
                             style: TextStyle(
                               fontWeight: FontWeight.normal,
@@ -104,7 +109,7 @@ class StateReservation extends State<Reservation> {
               }),
             )
                 :Text(
-              'No hay restaurantes disponibles',
+              'No hay mesas disponibles',
               style: TextStyle(
                   fontStyle: FontStyle.normal,
                   fontSize: 24

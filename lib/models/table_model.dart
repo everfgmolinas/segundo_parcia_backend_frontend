@@ -2,13 +2,15 @@ List<MyTable> tableFromJson(dynamic str) => List<MyTable>.from(str.map((x) => My
 
 class MyTable {
   String? nombre,
-      restaurante_id,
+      id,
+      estado;
+
+  int? restaurante_id,
       posicion_x,
       posicion_y,
-      id,
       planta,
-      capacidad,
-      estado;
+      capacidad;
+
 
   MyTable(
       {this.id,
