@@ -99,6 +99,8 @@ class StateAddRestaurant extends State<AddRestaurant> {
                               BlocProvider.of<RestaurantBloc>(context).add(
                                 PostRestaurant(name: nombre, direccion: direccion)
                               );
+                              _nameController.clear();
+                              _directionController.clear();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
