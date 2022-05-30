@@ -1,6 +1,6 @@
-List<Table> userVaccinationFromJson(dynamic str) => List<Table>.from(str.map((x) => Table.fromJson(x)));
+List<MyTable> tableFromJson(dynamic str) => List<MyTable>.from(str.map((x) => MyTable.fromJson(x)));
 
-class Table {
+class MyTable {
   String? nombre,
       restaurante_id,
       posicion_x,
@@ -10,7 +10,7 @@ class Table {
       capacidad,
       estado;
 
-  Table(
+  MyTable(
       {this.id,
         this.nombre,
         this.restaurante_id,
@@ -20,7 +20,7 @@ class Table {
         this.posicion_x,
         this.posicion_y});
 
-  factory Table.fromJson(Map<String, dynamic> json) => Table(
+  factory MyTable.fromJson(Map<String, dynamic> json) => MyTable(
     id: json["id"],
     nombre: json["nombre"],
     restaurante_id: json["restaurante_id"],
