@@ -9,7 +9,6 @@ import 'bloc/restaurant_bloc.dart';
 import 'constants.dart';
 import 'models/user_model.dart';
 
-User user = User();
 UserRepository userRepository = UserRepository();
 late GlobalKey<NavigatorState> navKey;
 bool loggeado = false;

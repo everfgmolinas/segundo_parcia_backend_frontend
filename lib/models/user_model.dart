@@ -1,16 +1,16 @@
-class User {
+class Cliente {
   String? id,
     identifier,
     givenName,
     lastName;
 
-  User(
+  Cliente(
       {this.id,
         this.givenName,
         this.lastName,
         this.identifier,});
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory Cliente.fromJson(Map<String, dynamic> json) => Cliente(
     id: json["id"],
     identifier: json["identifier"],
     lastName: json["lastName"],
