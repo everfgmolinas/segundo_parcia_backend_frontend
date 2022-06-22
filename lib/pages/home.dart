@@ -11,6 +11,7 @@ import 'package:segundo_parcia_backend/pages/gestor_pages/login_pages.dart';
 import 'package:dio/dio.dart';
 
 import 'gestor_pages/admin_page.dart';
+import 'gestor_pages/restaurant_options.dart';
 import 'gestor_pages/restaurant_pages.dart';
 
 
@@ -118,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Restaurants(restaurants: restaurantList![index])
+                                MaterialPageRoute(builder: (context) => RestaurantOptions(restaurants: restaurantList![index])
                                 )
                               );
                             },

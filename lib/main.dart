@@ -19,6 +19,7 @@ void main() async {
 
   navKey = GlobalKey<NavigatorState>();
   initDio(navKey: navKey);
+  dioByteInstance();
   runApp(const MyApp());
 }
 
