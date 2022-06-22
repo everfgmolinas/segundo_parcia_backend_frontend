@@ -1,3 +1,5 @@
+List<Cliente> clientesFromJson(dynamic str) => List<Cliente>.from(str.map((x) => Cliente.fromJson(x)));
+
 class Cliente {
   String? id,
     identifier,
@@ -12,9 +14,9 @@ class Cliente {
 
   factory Cliente.fromJson(Map<String, dynamic> json) => Cliente(
     id: json["id"],
-    identifier: json["identifier"],
-    lastName: json["lastName"],
-    givenName: json["givenName"],
+    identifier: json["cedula"],
+    lastName: json["apellido"],
+    givenName: json["nombre"],
   );
 
   Map<String, dynamic> toJson() => {
