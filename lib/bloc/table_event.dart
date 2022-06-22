@@ -10,6 +10,23 @@ class GetTable extends TableEvent {
   GetTable({required this.restaurant_id, required this.date, required this.time});
 }
 
+class GetTableList extends TableEvent {
+  final String restaurant_id;
+  GetTableList({required this.restaurant_id,});
+}
+
+class GetConsumes extends TableEvent {
+  final String mesa_id;
+  GetConsumes({required this.mesa_id,});
+}
+
+class GetClientes extends TableEvent {}
+
+class GetDetails extends TableEvent {
+  final String consume_id;
+  GetDetails({required this.consume_id,});
+}
+
 class PostTable extends TableEvent {
   final String? name;
   final String? direccion;
